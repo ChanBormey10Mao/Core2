@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Trial4</string>
+    <string name="RMtextView" />
+    <string name="JKTextView" />
+    <string name="JinTextView" />
+    <string name="VtextView" />
+    <string name="Name" />
+    <string name="StageName" />
+    <string name="NickName" />
+    <string name="Age" />
+    <string name="Role" />
+    <string name="KnownFor" />
+    <string name="famous_lineRM">famous line</string>
+    <string name="KnowHim">Do you know him? :</string>
+    <string name="famous_lineJin">famous line</string>
+    <string name="famous_lineJK">famous line</string>
+    <string name="famous_lineV">FAMOUS LINE</string>
+    <string name="rateAsk">How much do you like him out of 5?</string>
+    <string name="knowHim">You Know Him? :</string>
+</resources>
