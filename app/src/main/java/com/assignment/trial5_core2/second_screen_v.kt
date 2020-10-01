@@ -1,11 +1,13 @@
 package com.assignment.trial5_core2
 
+import android.app.Activity
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 
 class second_screen_v: AppCompatActivity() {
@@ -43,6 +45,13 @@ class second_screen_v: AppCompatActivity() {
         }else{
             knowHim.append("        No")
         }
+        val rating = findViewById<RatingBar>(R.id.ratingV)
+        rating.setOnRatingBarChangeListener(object: RatingBar.OnRatingBarChangeListener{
+            override fun onRatingChanged(p0: RatingBar?, p1: Float, p2: Boolean) {
+                Eachmember.rating = p1.toFloat()
+            }
+        })
+
         val vSoundButton = findViewById<Button>(R.id.SoundButton)
         var vSound: MediaPlayer? = MediaPlayer.create(this, R.raw.v_im_good_boy)
         vSoundButton?.setOnClickListener(object : View.OnClickListener{
@@ -50,5 +59,13 @@ class second_screen_v: AppCompatActivity() {
                 vSound?.start()
             }
         })
+    }
+    override fun onBackPressed() {
+
+        val i = intent.apply {
+            putExtra("v", Eachmember)
+        }
+        setResult(Activity.RESULT_OK, i)
+        super.onBackPressed()
     }
 }

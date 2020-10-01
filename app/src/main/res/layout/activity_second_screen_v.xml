@@ -110,7 +110,7 @@
             app:layout_constraintTop_toBottomOf="@+id/SoundButton" />
 
         <RatingBar
-            android:id="@+id/rating"
+            android:id="@+id/ratingV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"

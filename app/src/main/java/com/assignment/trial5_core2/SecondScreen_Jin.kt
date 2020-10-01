@@ -1,11 +1,13 @@
 package com.assignment.trial5_core2
 
+import android.app.Activity
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 
 class SecondScreen_Jin : AppCompatActivity() {
@@ -44,6 +46,13 @@ class SecondScreen_Jin : AppCompatActivity() {
             knowHim.append("        No")
         }
 
+        val rating = findViewById<RatingBar>(R.id.ratingJin)
+        rating.setOnRatingBarChangeListener(object: RatingBar.OnRatingBarChangeListener{
+            override fun onRatingChanged(p0: RatingBar?, p1: Float, p2: Boolean) {
+                Eachmember.rating = p1.toFloat()
+            }
+        })
+
         var jinSound: MediaPlayer? = MediaPlayer.create(this, R.raw.wow_handsome)
         val jinSoundButton = findViewById<Button>(R.id.SoundButton)
         jinSoundButton?.setOnClickListener(object : View.OnClickListener{
@@ -51,5 +60,13 @@ class SecondScreen_Jin : AppCompatActivity() {
                 jinSound?.start()
             }
         })
+    }
+    override fun onBackPressed() {
+
+        val i = intent.apply {
+            putExtra("jin", Eachmember)
+        }
+        setResult(Activity.RESULT_OK, i)
+        super.onBackPressed()
     }
 }

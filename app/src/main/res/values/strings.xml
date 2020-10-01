@@ -17,4 +17,5 @@
     <string name="famous_lineV">FAMOUS LINE</string>
     <string name="rateAsk">How much do you like him out of 5?</string>
     <string name="knowHim">You Know Him? :</string>
+    <string name="ratingValue">You give him: </string>
 </resources>

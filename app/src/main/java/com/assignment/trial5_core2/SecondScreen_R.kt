@@ -1,5 +1,6 @@
 package com.assignment.trial5_core2
 
+import android.app.Activity
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -38,10 +39,10 @@ class SecondScreen_R : AppCompatActivity() {
         val ImgRes = Picture.context.resources.getIdentifier("${Eachmember.img}", "drawable",Picture.context.packageName)
         Picture.setImageResource(ImgRes)
 
-        val rating = findViewById<RatingBar>(R.id.rating)
+        val rating = findViewById<RatingBar>(R.id.ratingRm)
         rating.setOnRatingBarChangeListener(object: RatingBar.OnRatingBarChangeListener{
             override fun onRatingChanged(p0: RatingBar?, p1: Float, p2: Boolean) {
-                Eachmember.rating = p1.toInt()
+                Eachmember.rating = p1.toFloat()
             }
         })
 
@@ -59,7 +60,14 @@ class SecondScreen_R : AppCompatActivity() {
                 rmSound?.start()
             }
         })
+    }
 
+    override fun onBackPressed() {
 
+        val i = intent.apply {
+            putExtra("RM", Eachmember)
+        }
+        setResult(Activity.RESULT_OK, i)
+        super.onBackPressed()
     }
 }

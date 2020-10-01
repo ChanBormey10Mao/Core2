@@ -1,11 +1,13 @@
 package com.assignment.trial5_core2
 
+import android.app.Activity
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 
 class second_screen_jk : AppCompatActivity() {
@@ -33,6 +35,14 @@ class second_screen_jk : AppCompatActivity() {
         val KnownFor = findViewById<TextView>(R.id.KnownForView)
         KnownFor.text = "Known as: " + Eachmember?.knownFor
 
+        val rating = findViewById<RatingBar>(R.id.ratingJK)
+        rating.setOnRatingBarChangeListener(object: RatingBar.OnRatingBarChangeListener{
+            override fun onRatingChanged(p0: RatingBar?, p1: Float, p2: Boolean) {
+                Eachmember.rating = p1.toFloat()
+            }
+        })
+
+
         val Picture = findViewById<ImageView>(R.id.Pic)
         val ImgRes = Picture.context.resources.getIdentifier("${Eachmember.img}", "drawable",Picture.context.packageName)
         Picture.setImageResource(ImgRes)
@@ -52,5 +62,13 @@ class second_screen_jk : AppCompatActivity() {
             }
         })
 
+    }
+    override fun onBackPressed() {
+
+        val i = intent.apply {
+            putExtra("jk", Eachmember)
+        }
+        setResult(Activity.RESULT_OK, i)
+        super.onBackPressed()
     }
 }
